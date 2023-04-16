@@ -26,31 +26,59 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	image2, _, err := ebitenutil.NewImageFromFile("red.png")
+	if err != nil {
+		log.Fatal(err)
+	}
 	//hello.Image = &E.Image{image1}
 	hello := E.NewEntity()
-	hello.NewPosition(150, 150).
-		NewImage(image1).
+	hello.NewPosition(250, 200).
+		NewImage(image2).
 		NewWasd(7).
-		NewGravity(3).NewRect(30, 30)
+		NewGravity(3).
+		NewRect(44, 56)
 	print(hello.Position.X)
 
 	dude1 := E.NewEntity()
 	dude1.NewPosition(250, 300).
 		NewImage(image1).
-		NewFloor().NewRect(30, 30)
+		NewFloor().
+		NewRect(30, 30)
 
 	hello2 := E.NewEntity()
 	hello2.NewPosition(250, -250).
 		NewImage(image1).
 		NewRect(30, 30).
-		NewGravity(1).NewFloor()
+		NewGravity(1).
+		NewFloor()
 
 	for i := 0; i < 10; i++ {
 		E.NewEntity().
-			NewPosition(130*(float64(i)), 250).
-			NewImage(image1).
-			NewRect(130, 190).
+			NewPosition(44*(float64(i)), 50).
+			NewImage(image2).
+			NewRect(44, 56).
 			NewFloor()
+	}
+
+	for i := 0; i < 10; i++ {
+		E.NewEntity().
+			NewPosition(-44*(float64(i)), 200).
+			NewImage(image2).
+			NewRect(44, 56).
+			NewFloor()
+	}
+
+	for i := 0; i < 10; i++ {
+		E.NewEntity().
+			NewPosition(-44*(float64(i))-400, 50).
+			NewImage(image2).
+			NewRect(44, 56).
+			NewFloor()
+	}
+
+	type ent1 struct {
+		E.Position
+		E.Entity
 	}
 
 }
